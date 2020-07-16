@@ -317,6 +317,16 @@ func parseValue(value string, envMap map[string]string) string {
 		}
 	}
 
+	// expand variables
+	value = os.Expand(value, func(key string) string {
+		if val, ok := envMap[key]; ok {
+			return val
+		}
+		if val, ok := os.LookupEnv(key); ok {
+			return val
+		}
+		return os.Getenv(key)
+	})
 	return value
 }
 
@@ -332,7 +342,10 @@ func expandVariables(v string, m map[string]string) string {
 		if submatch[1] == "\\" || submatch[2] == "(" {
 			return submatch[0][1:]
 		} else if submatch[4] != "" {
-			return m[submatch[4]]
+			if val, ok := m[submatch[4]]; ok {
+				return val
+			}
+			return os.Getenv(submatch[4])
 		}
 		return s
 	})
