@@ -23,7 +23,7 @@ go get github.com/wallester/godotenv
 or if you want to use it as a bin command
 
 ```shell
-go get github.com/joho/wallester/cmd/godotenv
+go get github.com/wallester/cmd/godotenv
 ```
 
 ## Usage
