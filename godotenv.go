@@ -322,9 +322,11 @@ func parseValue(value string, envMap map[string]string) string {
 		if val, ok := envMap[key]; ok {
 			return val
 		}
+
 		if val, ok := os.LookupEnv(key); ok {
 			return val
 		}
+
 		return os.Getenv(key)
 	})
 
