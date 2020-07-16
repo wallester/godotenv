@@ -327,6 +327,7 @@ func parseValue(value string, envMap map[string]string) string {
 		}
 		return os.Getenv(key)
 	})
+
 	return value
 }
 
@@ -345,8 +346,10 @@ func expandVariables(v string, m map[string]string) string {
 			if val, ok := m[submatch[4]]; ok {
 				return val
 			}
+
 			return os.Getenv(submatch[4])
 		}
+
 		return s
 	})
 }
