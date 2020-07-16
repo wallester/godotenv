@@ -17,12 +17,13 @@ There is test coverage and CI for both linuxish and windows environments, but I 
 As a library
 
 ```shell
-go get github.com/joho/godotenv
+go get github.com/wallester/godotenv
 ```
 
 or if you want to use it as a bin command
+
 ```shell
-go get github.com/joho/godotenv/cmd/godotenv
+go get github.com/joho/wallester/cmd/godotenv
 ```
 
 ## Usage
@@ -165,7 +166,7 @@ content, err := godotenv.Marshal(env)
 
 Contributions are most welcome! The parser itself is pretty stupidly naive and I wouldn't be surprised if it breaks with edge cases.
 
-*code changes without tests will not be accepted*
+_code changes without tests will not be accepted_
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
