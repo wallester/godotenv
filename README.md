@@ -17,12 +17,13 @@ There is test coverage and CI for both linuxish and windows environments, but I 
 As a library
 
 ```shell
-go get github.com/joho/godotenv
+go get github.com/wallester/godotenv
 ```
 
 or if you want to use it as a bin command
+
 ```shell
-go get github.com/joho/godotenv/cmd/godotenv
+go get github.com/wallester/cmd/godotenv
 ```
 
 ## Usage
