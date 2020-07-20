@@ -41,7 +41,7 @@ Then in your Go app you can do something like
 package main
 
 import (
-    "github.com/joho/godotenv"
+    "github.com/wallester/godotenv"
     "log"
     "os"
 )
@@ -62,7 +62,7 @@ func main() {
 If you're even lazier than that, you can just take advantage of the autoload package which will read in `.env` on import
 
 ```go
-import _ "github.com/joho/godotenv/autoload"
+import _ "github.com/wallester/godotenv/autoload"
 ```
 
 While `.env` in the project root is the default, you don't have to be constrained, both examples below are 100% legit
@@ -166,7 +166,7 @@ content, err := godotenv.Marshal(env)
 
 Contributions are most welcome! The parser itself is pretty stupidly naive and I wouldn't be surprised if it breaks with edge cases.
 
-*code changes without tests will not be accepted*
+_code changes without tests will not be accepted_
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
