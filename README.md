@@ -166,7 +166,7 @@ content, err := godotenv.Marshal(env)
 
 Contributions are most welcome! The parser itself is pretty stupidly naive and I wouldn't be surprised if it breaks with edge cases.
 
-_code changes without tests will not be accepted_
+*code changes without tests will not be accepted*
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
