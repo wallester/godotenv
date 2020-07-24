@@ -317,24 +317,6 @@ func parseValue(value string, envMap map[string]string) string {
 		}
 	}
 
-	// expand variables
-	value = os.Expand(value, func(key string) string {
-		if val, ok := envMap[key]; ok {
-			return val
-		}
-
-		if val, ok := os.LookupEnv(key); ok {
-			return val
-		}
-
-		// variable is not defined - return the key as it was
-		if withBrackets := fmt.Sprintf("${%s}", key); strings.Contains(value, withBrackets) {
-			return withBrackets
-		} else {
-			return fmt.Sprintf("$%s", key)
-		}
-	})
-
 	return value
 }
 
