@@ -253,6 +253,16 @@ func TestExpanding(t *testing.T) {
 			"FOO=test\nBAR=\"foo\\${FOO} ${FOO}\"",
 			map[string]string{"FOO": "test", "BAR": "foo${FOO} test"},
 		},
+		{
+			"does not expand variables with dollar symbol",
+			"PINMS_RSA_PRIVATE_KEY_PASSPHRASE=Ga$$",
+			map[string]string{"PINMS_RSA_PRIVATE_KEY_PASSPHRASE": "Ga$$"},
+		},
+		{
+			"does not expand variables with many symbols",
+			"PINMS_RSA_PRIVATE_KEY_PASSPHRASE=Ga())@$*&%{@!}$$hG$",
+			map[string]string{"PINMS_RSA_PRIVATE_KEY_PASSPHRASE": "Ga())@$*&%{@!}$$hG$"},
+		},
 	}
 
 	for _, tt := range tests {
@@ -282,6 +292,7 @@ func TestActualEnvVarsAreLeftAlone(t *testing.T) {
 }
 
 func TestParsing(t *testing.T) {
+	parseAndCompare(t, "FOO=Heyyyy$$", "FOO", "Heyyyy$$")
 	// unquoted values
 	parseAndCompare(t, "FOO=bar", "FOO", "bar")
 
