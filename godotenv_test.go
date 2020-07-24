@@ -260,8 +260,8 @@ func TestExpanding(t *testing.T) {
 		},
 		{
 			"does not expand variables with many symbols",
-			"FOO=Ga(2))@$*&%{@!}$$hG$",
-			map[string]string{"FOO": "Ga(2))@$*&%{@!}$$hG$"},
+			"FOO=Ga())@$*&%{@!}$$hG$",
+			map[string]string{"FOO": "Ga())@$*&%{@!}$$hG$"},
 		},
 		{
 			"does not expand variables with symbols and numbers",
