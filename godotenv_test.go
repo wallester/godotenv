@@ -255,13 +255,13 @@ func TestExpanding(t *testing.T) {
 		},
 		{
 			"does not expand variables with dollar symbol",
-			"PINMS_RSA_PRIVATE_KEY_PASSPHRASE=Ga$$",
-			map[string]string{"PINMS_RSA_PRIVATE_KEY_PASSPHRASE": "Ga$$"},
+			"FOO=Ga$$",
+			map[string]string{"FOO": "Ga$$"},
 		},
 		{
 			"does not expand variables with many symbols",
-			"PINMS_RSA_PRIVATE_KEY_PASSPHRASE=Ga())@$*&%{@!}$$hG$",
-			map[string]string{"PINMS_RSA_PRIVATE_KEY_PASSPHRASE": "Ga())@$*&%{@!}$$hG$"},
+			"FOO=Ga())@$*&%{@!}$$hG$",
+			map[string]string{"FOO": "Ga())@$*&%{@!}$$hG$"},
 		},
 	}
 
