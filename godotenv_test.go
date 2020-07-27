@@ -253,6 +253,21 @@ func TestExpanding(t *testing.T) {
 			"FOO=test\nBAR=\"foo\\${FOO} ${FOO}\"",
 			map[string]string{"FOO": "test", "BAR": "foo${FOO} test"},
 		},
+		{
+			"does not expand variables with dollar symbol",
+			"FOO=Ga$$",
+			map[string]string{"FOO": "Ga$$"},
+		},
+		{
+			"does not expand variables with many symbols",
+			"FOO=Ga())@$*&%{@!}$$hG$",
+			map[string]string{"FOO": "Ga())@$*&%{@!}$$hG$"},
+		},
+		{
+			"does not expand variables with symbols and numbers",
+			"FOO=Ga(2))6@$*4&2%{5@!}$$h9G$",
+			map[string]string{"FOO": "Ga(2))6@$*4&2%{5@!}$$h9G$"},
+		},
 	}
 
 	for _, tt := range tests {
@@ -282,6 +297,7 @@ func TestActualEnvVarsAreLeftAlone(t *testing.T) {
 }
 
 func TestParsing(t *testing.T) {
+	parseAndCompare(t, "FOO=Heyyyy$$", "FOO", "Heyyyy$$")
 	// unquoted values
 	parseAndCompare(t, "FOO=bar", "FOO", "bar")
 
